@@ -1,0 +1,7 @@
+{
+  "model": "clip-vit-base-patch32-finetuned",
+  "R@1": 1.0,
+  "R@5": 1.0,
+  "R@10": 1.0,
+  "MRR": 1.0
+}
