@@ -1,0 +1,9 @@
+[
+  {
+    "query": "a cat",
+    "expected": 3,
+    "got": 5,
+    "image": "data/raw/000735.png",
+    "score": 0.28262612223625183
+  }
+]

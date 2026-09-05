@@ -1,0 +1,140 @@
+[
+  {
+    "query": "an automobile in the wild",
+    "expected": 1,
+    "got": 9,
+    "score": 0.25190797448158264
+  },
+  {
+    "query": "automobile animal",
+    "expected": 1,
+    "got": 3,
+    "score": 0.2681729197502136
+  },
+  {
+    "query": "a cat",
+    "expected": 3,
+    "got": 5,
+    "score": 0.28262612223625183
+  },
+  {
+    "query": "an cat",
+    "expected": 3,
+    "got": 5,
+    "score": 0.28295812010765076
+  },
+  {
+    "query": "photo of a cat",
+    "expected": 3,
+    "got": 5,
+    "score": 0.2893776297569275
+  },
+  {
+    "query": "picture of a cat",
+    "expected": 3,
+    "got": 5,
+    "score": 0.2950606942176819
+  },
+  {
+    "query": "image of a cat",
+    "expected": 3,
+    "got": 5,
+    "score": 0.30056703090667725
+  },
+  {
+    "query": "the cat",
+    "expected": 3,
+    "got": 5,
+    "score": 0.2755027115345001
+  },
+  {
+    "query": "a dog in the wild",
+    "expected": 5,
+    "got": 4,
+    "score": 0.2623937129974365
+  },
+  {
+    "query": "a dog on the road",
+    "expected": 5,
+    "got": 1,
+    "score": 0.26473328471183777
+  },
+  {
+    "query": "an dog on the road",
+    "expected": 5,
+    "got": 1,
+    "score": 0.26476967334747314
+  },
+  {
+    "query": "photo of a dog on the road",
+    "expected": 5,
+    "got": 1,
+    "score": 0.2811298072338104
+  },
+  {
+    "query": "picture of a dog on the road",
+    "expected": 5,
+    "got": 1,
+    "score": 0.28265851736068726
+  },
+  {
+    "query": "image of a dog on the road",
+    "expected": 5,
+    "got": 1,
+    "score": 0.28853660821914673
+  },
+  {
+    "query": "a photo of dog on the road",
+    "expected": 5,
+    "got": 1,
+    "score": 0.2773454785346985
+  },
+  {
+    "query": "dog animal",
+    "expected": 5,
+    "got": 3,
+    "score": 0.2619907855987549
+  },
+  {
+    "query": "a horse in the wild",
+    "expected": 7,
+    "got": 4,
+    "score": 0.2803371548652649
+  },
+  {
+    "query": "an horse in the wild",
+    "expected": 7,
+    "got": 4,
+    "score": 0.279558926820755
+  },
+  {
+    "query": "photo of a horse in the wild",
+    "expected": 7,
+    "got": 4,
+    "score": 0.28287702798843384
+  },
+  {
+    "query": "picture of a horse in the wild",
+    "expected": 7,
+    "got": 4,
+    "score": 0.2824975252151489
+  },
+  {
+    "query": "image of a horse in the wild",
+    "expected": 7,
+    "got": 4,
+    "score": 0.2963120937347412
+  },
+  {
+    "query": "a photo of horse in the wild",
+    "expected": 7,
+    "got": 4,
+    "score": 0.2860810160636902
+  },
+  {
+    "query": "an truck in the wild",
+    "expected": 9,
+    "got": 1,
+    "score": 0.26039794087409973
+  }
+]
