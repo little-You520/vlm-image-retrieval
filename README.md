@@ -2,7 +2,11 @@
 
 基于 **CLIP (ViT-B/32)** 和 **FAISS** 构建的文本搜图 Demo。输入一段文字描述，系统自动在图片库里找出最匹配的 Top-K 张图片。
 
+---
+
 ## 📊 实验结果
+
+| 实验 | 模型 | R@1 | R@5 | MRR | 状态 |
 
 | **Baseline** | CLIP (ViT-B/32) 零样本 | 89.05% | 98.10% | 92.87% | ✅ 基线 |
 
@@ -16,7 +20,9 @@
 1. **Baseline (89.05%)**：CLIP 在 CIFAR-10 上具备较强的零样本检索能力，但在细粒度类别（如猫 vs 狗）上存在混淆。
 2. **改进点 1 (87.62%)**：换用 ViT-L/14 大模型后性能反而下降，证明 **模型容量需与数据质量匹配**——CIFAR-10 的 32x32 低分辨率无法发挥大模型优势。
 3. **改进点 2 (100.00%)**：通过微调视觉编码器最后 3 层，模型完美适配了 CIFAR-10 的数据分布。该结果验证了 **领域微调的有效性**，同时也受限于数据集规模（10 类，2000 张）。
-4. **改进点 3 (90.00%)**：在零样本 Baseline 上使用同义词扩展查询，R@1 提升 0.95%，证明 **查询优化** 在真实场景（如用户输入模糊）中具有实用价值。-
+4. **改进点 3 (90.00%)**：在零样本 Baseline 上使用同义词扩展查询，R@1 提升 0.95%，证明 **查询优化** 在真实场景（如用户输入模糊）中具有实用价值。
+
+---
 
 ## 🧠 项目核心逻辑（这系统是怎么工作的？）
 
@@ -62,3 +68,57 @@ python src/eval.py
 
 # 6. 失败案例分析（生成饼图）
 python src/analyze.py
+🚀 部署与可视化
+本项目提供了完整的 Web 部署方案：
+
+后端 API (src/api.py)：基于 FastAPI 提供 RESTful 检索接口，支持 /health 健康检查和 /search 文本检索。
+
+前端 Demo (app.py)：基于 Streamlit 构建的交互式界面，支持文字输入和示例按钮（Cat/Dog/Car），实时展示检索图片和相似度分数。
+
+启动方法：
+
+bash
+# 终端 1：启动后端
+python src/api.py
+
+# 终端 2：启动前端
+streamlit run app.py
+⚠️ 局限性 & 未来工作
+当前已知局限
+图片分辨率过低：本项目基于 CIFAR-10（32x32 像素）进行概念验证，导致可视化图片颗粒感明显。该问题不影响检索逻辑，但影响演示观感。
+
+封闭集测试：数据集仅包含 10 个类别，且检索库与训练集同源，微调后达到 100% 准确率。该结果证明了微调流程的有效性，但不代表在开放世界（如 COCO 或工业质检）中的泛化能力。
+
+部署依赖：当前 Web 服务需本地同时运行 FastAPI 和 Streamlit 两个进程，暂未实现全静态化前端部署。
+
+未来改进方向
+高清数据集迁移：替换为 Flickr30k 或 COCO，代码无需改动即可适配真实场景。
+
+模型轻量化：尝试蒸馏或 ONNX 导出，降低推理延迟。
+
+前端优化：将 Streamlit 替换为 React/Vue 纯前端，实现跨平台调用。
+
+📁 项目结构
+text
+vlm-image-retrieval/
+├── data/                     # 数据集（图片和清单，大文件被 .gitignore 屏蔽）
+│   ├── raw/                  # 2000 张图片
+│   └── manifest.jsonl        # 图片路径及标签清单
+├── src/                      # 核心代码
+│   ├── preprocess.py         # 数据预处理
+│   ├── build_index.py        # FAISS 索引构建
+│   ├── search.py             # 检索逻辑
+│   ├── eval.py               # 评测指标计算
+│   ├── analyze.py            # 失败案例分析
+│   ├── api.py                # FastAPI 后端服务
+│   └── train_finetune.py     # 领域微调脚本
+├── results/                  # 评测结果
+│   ├── baseline.json         # 量化指标
+│   ├── baseline_report.md    # 详细分析报告
+│   └── failure_analysis.png  # 失败案例饼图
+├── app.py                    # Streamlit 前端界面
+├── baseline.py               # Day 1 初始 Demo
+├── Dockerfile                # 容器化部署
+└── requirements.txt          # 依赖清单
+📌 致谢
+本项目基于 HuggingFace Transformers 和 FAISS 构建，感谢开源社区提供的强大工具。
