@@ -118,7 +118,8 @@ vlm-image-retrieval/
 │   └── failure_analysis.png  # 失败案例饼图
 ├── app.py                    # Streamlit 前端界面
 ├── baseline.py               # Day 1 初始 Demo
-├── Dockerfile                # 容器化部署
+├── Dockerfile.txt            # 容器化部署
+├── test_dataset.py           # 数据加载测试
 └── requirements.txt          # 依赖清单
 📌 致谢
 本项目基于 HuggingFace Transformers 和 FAISS 构建，感谢开源社区提供的强大工具。
